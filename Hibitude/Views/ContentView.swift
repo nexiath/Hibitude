@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var userViewModel = UserViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if userViewModel.userData.isFirstLaunch {
+            WelcomeView()
+        } else {
+            MainView()
         }
-        .padding()
     }
 }
+
 
 #Preview {
     ContentView()
